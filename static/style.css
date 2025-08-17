@@ -1,0 +1,225 @@
+/* Full page background image with black overlay */
+@font-face {
+    font-family: 'Caligo';
+    src: url('/static/Caligo.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+* {
+    font-family: 'Caligo', sans-serif !important;
+    letter-spacing: 0.5px;    /* subtle kerning */
+    font-weight: normal;
+}
+
+body {
+    margin: 0;
+    font-family: Caligo, sans-serif;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 100vh;
+    overflow: hidden;
+    background: url('/static/bg.jpg') no-repeat center center;
+    background-size: cover;
+    position: relative;
+}
+
+body::after {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7); /* dark overlay */
+    z-index: -1;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 20px;
+    z-index: 1;
+}
+
+.title_text {
+    margin-top: 25px;
+    font-size: 72px;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+#connectWallet {
+    padding: 10px 25px;
+    font-size: 20px;
+    border: none;
+    border: #ffffff solid 2px;
+    background-color: rgba(26,26,26,0.8);
+    color: #fff;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+#connectWallet:hover {
+    background-color: rgba(51,51,51,0.8);
+}
+
+#walletAddress {
+    box-sizing: border-box;      /* include padding/border in size */
+    line-height: 1;              /* prevent extra height */
+    padding: 10px 25px;
+    font-size: 20px;
+    border: #ffffff solid 2px;
+    background-color: rgba(26,26,26,0.8);
+    color: #fff;
+    cursor: default;             /* not clickable like a button */
+    text-align: center;
+    transition: background 0.3s;
+    vertical-align: middle;
+    margin: 0 25px 0 0;
+          /* aligns nicely with button */
+}
+
+
+/* Big circular button */
+#clickButton {
+    width: 250px;
+    height: 250px;
+    border-radius: 50%;
+    border: 2.2px solid #fff;
+    font-size: 36px;
+    font-weight: bold;
+    background-color: rgba(17,17,17,0.8);
+    color: #fff;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin-bottom: 30px;
+    transition: background 0.3s, transform 0.2s, filter 0.2s;
+}
+
+#clickButton:disabled {
+    color: rgb(166, 166, 166);
+    cursor: not-allowed;  
+}
+
+/* Hover behavior */
+#clickButton:disabled:hover {
+    transform: scale(1.02);
+    filter: brightness(0.8);
+}
+
+#clickButton:enabled:hover {
+    transform: scale(1.04);
+    filter: brightness(1.05);
+}
+
+#connectWalletContainer {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-bottom: 35px;
+}
+/* Status and timer styling */
+.info {
+    font-size: 25px;
+    margin: 10px 0;
+    text-align: center;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
+    min-height: 28px; /* reserve space even when empty */
+}
+
+/* status text red, timer green */
+#status {
+    color: #ffffff;
+}
+
+#timer {
+    color: #ffffff;
+}
+
+#bottomBar {
+  font-size: 20px;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    color: #fff;        /* matches your theme */
+    padding: 20px 0;
+    z-index: 1000;
+    background: transparent; /* no background, blends with page */
+}
+
+#bottomBar b {
+    color: red;
+}
+
+/* --- Mobile Responsive --- */
+@media screen and (max-width: 768px) {
+    .title_text {
+        font-size: 48px; /* smaller title */
+        margin-bottom: 40px;
+    }
+
+    #connectWallet,
+    #walletAddress {
+        font-size: 16px;
+        padding: 8px 20px;
+        margin-bottom: 35px;
+    }
+
+    #clickButton {
+        width: 220px;
+        height: 220px;
+        font-size: 28px;
+        margin-bottom: 50px;
+    }
+
+    .info {
+        font-size: 20px;
+        margin: 8px 0;
+        min-height: 24px;
+    }
+
+    #bottomBar {
+        font-size: 16px;
+        padding: 15px 0;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .title_text {
+        font-size: 40px;
+        margin-bottom: 35px;
+    }
+
+    #connectWallet,
+    #walletAddress {
+        font-size: 16px;
+        padding: 6px 15px;
+        margin-bottom: 45px;
+    }
+
+    #clickButton {
+        width: 200px;
+        height: 200px;
+        font-size: 35px;
+        margin-bottom: 50px;
+    }
+
+    .info {
+        font-size: 18px;
+        min-height: 20px;
+    }
+
+    #bottomBar {
+        font-size: 12px;
+        padding: 10px 0;
+    }
+}
